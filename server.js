@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use('/arquivos', express.static('./public'));
+app.use('/arquivos', express.static('./Projeto/public'));
 
 const peixes = [
     { 
@@ -78,7 +78,7 @@ app.get('/api/peixes', (req, res) => {
 
 app.get('/api/foto/:nome', (req, res) => {
     const nomeDaFoto = req.params.nome;
-    const caminhoArquivo = path.join(__dirname, 'public', 'Imagens', `${nomeDaFoto}.png`);
+    const caminhoArquivo = path.join(__dirname, 'Projeto', 'public', 'Imagens', `${nomeDaFoto}.png`);
     res.sendFile(caminhoArquivo, (err) => {
         if (err) {
             if (!res.headersSent) {
@@ -90,7 +90,7 @@ app.get('/api/foto/:nome', (req, res) => {
 
 app.get('/api/audio/:nome', (req, res) => {
     const nomeDoAudio = req.params.nome;
-    res.sendFile(path.join(__dirname, 'public', 'audio', `${nomeDoAudio}.mp3`));
+    res.sendFile(path.join(__dirname, 'Projeto', 'public', 'audio', `${nomeDoAudio}.mp3`));
 });
 
 app.get('/api/info', (req, res) => {
